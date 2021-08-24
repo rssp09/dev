@@ -1,14 +1,19 @@
 pipeline {
     agent any
-stage('init')
+	{
+    stages
+	{
+	stage('init')
 {
 checkout scm
 }
-    stages {
         stage('Build')
         {
-        withMaven(maven: 'mvn'){
-            steps {
+        
+		 steps 
+			{
+			withMaven(maven: 'mvn') 
+			{
                 sh "mvn clean install"
                 echo 'Building..'
             }
@@ -26,4 +31,4 @@ checkout scm
         }
     }
 }
-
+}
