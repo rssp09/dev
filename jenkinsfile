@@ -1,10 +1,13 @@
-node{
-    stage('init'){
-      //init sample
+pipeline {
+  agent any
+  tools {
+    maven 'maven-3.8.2' 
+  }
+  stages {
+    stage ('Build') {
+      steps {
+        sh 'mvn clean package'
+      }
     }
-    stage('build'){
-        withMaven(maven: 'mvn') {
-            sh "mvn clean package"
-        }
-    }
+  }
 }
