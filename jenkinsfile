@@ -7,11 +7,13 @@ checkout scm
     stages {
         stage('Build')
 	{
+	withMaven(maven: 'mvn'){
             steps {
                 sh "mvn clean install"
 		echo 'Building..'
             }
         }
+	}
         stage('Test') {
             steps {
                 echo 'Testing..'
