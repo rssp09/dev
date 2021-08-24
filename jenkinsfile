@@ -1,34 +1,10 @@
-pipeline {
-    agent any
-	{
-    stages
-	{
-	stage('init')
-{
-checkout scm
-}
-        stage('Build')
-        {
-        
-		 steps 
-			{
-			withMaven(maven: 'mvn') 
-			{
-                sh "mvn clean install"
-                echo 'Building..'
-            }
-        }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
+node{
+    stage('init'){
+      //init sample
+    }
+    stage('build'){
+        withMaven(maven: 'mvn') {
+            sh "mvn clean package"
         }
     }
-}
 }
