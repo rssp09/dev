@@ -1,19 +1,19 @@
 pipeline {
     agent any
 stage('init')
-{ 
+{
 checkout scm
 }
     stages {
         stage('Build')
-	{
-	withMaven(maven: 'mvn'){
+        {
+        withMaven(maven: 'mvn'){
             steps {
                 sh "mvn clean install"
-		echo 'Building..'
+                echo 'Building..'
             }
         }
-	}
+        }
         stage('Test') {
             steps {
                 echo 'Testing..'
@@ -26,3 +26,4 @@ checkout scm
         }
     }
 }
+
